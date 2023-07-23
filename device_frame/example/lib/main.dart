@@ -9,10 +9,10 @@ class ExampleApp extends StatefulWidget {
   const ExampleApp({Key? key}) : super(key: key);
 
   @override
-  _ExampleAppState createState() => _ExampleAppState();
+  ExampleAppState createState() => ExampleAppState();
 }
 
-class _ExampleAppState extends State<ExampleApp> {
+class ExampleAppState extends State<ExampleApp> {
   bool isDark = true;
   bool isFrameVisible = true;
   bool isKeyboard = false;
@@ -118,10 +118,10 @@ class _ExampleAppState extends State<ExampleApp> {
                   builder: (context) => !isEnabled
                       ? FakeScreen(key: screenKey)
                       : AnimatedBuilder(
-                          animation: DefaultTabController.of(context)!,
+                          animation: DefaultTabController.of(context),
                           builder: (context, _) => _frame(
                             Devices
-                                .all[DefaultTabController.of(context)!.index],
+                                .all[DefaultTabController.of(context).index],
                           ),
                         ),
                 ),
@@ -139,10 +139,10 @@ class FakeScreen extends StatefulWidget {
     Key? key,
   }) : super(key: key);
   @override
-  _FakeScreenState createState() => _FakeScreenState();
+  FakeScreenState createState() => FakeScreenState();
 }
 
-class _FakeScreenState extends State<FakeScreen> {
+class FakeScreenState extends State<FakeScreen> {
   bool isDelayEnded = false;
 
   @override

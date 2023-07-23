@@ -24,6 +24,8 @@ class PreviewWidgetsFlutterBinding extends BindingBase
         SemanticsBinding,
         RendererBinding,
         WidgetsBinding {
+  static ui.Brightness? platformBrightness;
+
   static PreviewWindow get previewWindow {
     return previewBinding.window as PreviewWindow;
   }
@@ -48,8 +50,7 @@ class PreviewWidgetsFlutterBinding extends BindingBase
   /// binding instance to a [TestWidgetsFlutterBinding], not a
   /// [WidgetsFlutterBinding].
   static WidgetsBinding ensureInitialized() {
-    if (WidgetsBinding.instance == null) PreviewWidgetsFlutterBinding();
-    return WidgetsBinding.instance!;
+    return WidgetsBinding.instance;
   }
 
   ui.SingletonFlutterWindow? _previewWindow;
@@ -118,7 +119,7 @@ class PreviewWidgetsFlutterBinding extends BindingBase
     super.initRenderView();
     renderView = PreviewRenderView(
       configuration: createViewConfiguration(),
-      window: window,
+      view: window,
     );
     renderView.prepareInitialFrame();
   }

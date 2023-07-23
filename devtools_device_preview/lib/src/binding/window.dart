@@ -159,12 +159,12 @@ class PreviewWindow implements ui.SingletonFlutterWindow {
     onLocaleChanged?.call();
   }
 
-  ui.WindowPadding? _previewPadding;
+  ui.ViewPadding? _previewPadding;
 
   @override
-  ui.WindowPadding get padding => _previewPadding ?? parent.padding;
+  ui.ViewPadding get padding => _previewPadding ?? parent.padding;
 
-  set padding(ui.WindowPadding? value) {
+  set padding(ui.ViewPadding? value) {
     _previewPadding = value;
     onMetricsChanged?.call();
   }
@@ -228,7 +228,7 @@ class PreviewWindow implements ui.SingletonFlutterWindow {
   }
 
   @override
-  ui.WindowPadding get systemGestureInsets => parent.systemGestureInsets;
+  ui.ViewPadding get systemGestureInsets => parent.systemGestureInsets;
 
   double? _previewTextScaleFactor;
 
@@ -246,17 +246,14 @@ class PreviewWindow implements ui.SingletonFlutterWindow {
       parent.updateSemantics(update);
 
   @override
-  ui.ViewConfiguration get viewConfiguration => parent.viewConfiguration;
+  ui.ViewPadding get viewInsets => parent.viewInsets;
+
+  ui.ViewPadding? _previewViewPadding;
 
   @override
-  ui.WindowPadding get viewInsets => parent.viewInsets;
+  ui.ViewPadding get viewPadding => _previewViewPadding ?? parent.viewPadding;
 
-  ui.WindowPadding? _previewViewPadding;
-
-  @override
-  ui.WindowPadding get viewPadding => _previewViewPadding ?? parent.viewPadding;
-
-  set viewPadding(ui.WindowPadding? value) {
+  set viewPadding(ui.ViewPadding? value) {
     _previewViewPadding = value;
     onMetricsChanged?.call();
   }
@@ -278,9 +275,18 @@ class PreviewWindow implements ui.SingletonFlutterWindow {
 
   @override
   String? get systemFontFamily => parent.systemFontFamily;
+  
+  @override
+  ui.GestureSettings get gestureSettings => parent.gestureSettings;
+  
+  @override
+  bool get nativeSpellCheckServiceDefined => parent.nativeSpellCheckServiceDefined;
+  
+  @override
+  Object get viewId => parent.viewId;
 }
 
-class PreviewWindowPadding implements ui.WindowPadding {
+class PreviewWindowPadding implements ui.ViewPadding {
   const PreviewWindowPadding({
     required this.left,
     required this.top,

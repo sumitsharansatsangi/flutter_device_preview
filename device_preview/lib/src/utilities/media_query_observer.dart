@@ -11,10 +11,10 @@ class MediaQueryObserver extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MediaQueryObserverState createState() => _MediaQueryObserverState();
+  MediaQueryObserverState createState() => MediaQueryObserverState();
 }
 
-class _MediaQueryObserverState extends State<MediaQueryObserver>
+class MediaQueryObserverState extends State<MediaQueryObserver>
     with WidgetsBindingObserver {
   @override
   void didChangeMetrics() {
@@ -37,7 +37,7 @@ class _MediaQueryObserverState extends State<MediaQueryObserver>
   @override
   Widget build(BuildContext context) {
     return MediaQuery(
-      data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+      data: MediaQueryData.fromView(WidgetsBinding.instance.window),
       child: widget.child,
     );
   }

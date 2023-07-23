@@ -1,6 +1,5 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'processors/base64.dart';
 import 'processors/processor.dart';
@@ -70,10 +69,12 @@ class _DevicePreviewScreenshotState extends State<DevicePreviewScreenshot> {
                   });
                   try {
                     final result = await DevicePreview.screenshot(context);
-                    await widget.onScreenshot(
+                    if(context.mounted) {
+                      await widget.onScreenshot(
                       this.context,
                       result,
                     );
+                    }
                   } finally {
                     setState(() {
                       _isLoading = false;
@@ -103,14 +104,20 @@ class _DevicePreviewScreenshotState extends State<DevicePreviewScreenshot> {
                           context,
                           device,
                         );
-                        await Future.delayed(const Duration(milliseconds: 500));
-                        final result = await DevicePreview.screenshot(context);
-                        await widget.onScreenshot(this.context, result);
+                        await Future.delayed(const Duration(milliseconds: 50));
+                        if(context.mounted) {
+                          final result = await DevicePreview.screenshot(context);
+                        if(context.mounted) {
+                          await widget.onScreenshot(context, result);
+                        }
+                        }
                       }
-                      DevicePreview.selectDevice(
+                      if(context.mounted) {
+                        DevicePreview.selectDevice(
                         context,
                         initialDevice.identifier,
                       );
+                      }
                     } finally {
                       setState(() {
                         _isLoading = false;

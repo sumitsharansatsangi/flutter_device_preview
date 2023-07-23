@@ -16,8 +16,12 @@ ScreenshotProcessor screenshotAsFiles(Directory directory) {
         case ImageByteFormat.png:
           return '.png';
         case ImageByteFormat.rawUnmodified:
+        case ImageByteFormat.rawExtendedRgba128:
+        case ImageByteFormat.rawStraightRgba:
         case ImageByteFormat.rawRgba:
           return '.bmp';
+        
+
       }
     }();
     final file = File(

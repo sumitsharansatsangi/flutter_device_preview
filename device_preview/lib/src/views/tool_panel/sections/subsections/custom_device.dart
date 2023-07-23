@@ -45,8 +45,8 @@ Future<dynamic> _openDeviceSizeAdjustDialog({
         ),
         actions: [
           TextButton(
-            child: const Text('Close'),
             onPressed: navigator.pop,
+            child: const Text('Close'),
           ),
           TextButton(
             child: const Text('Confirm'),

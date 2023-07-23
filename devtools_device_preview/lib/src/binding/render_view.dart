@@ -10,11 +10,11 @@ class PreviewRenderView extends RenderView {
   PreviewRenderView({
     RenderBox? child,
     required ViewConfiguration configuration,
-    required ui.FlutterView window,
+    required ui.FlutterView view,
   }) : super(
           child: child,
           configuration: configuration,
-          window: window,
+          view: view,
         );
 
   DeviceInfo? _device;
