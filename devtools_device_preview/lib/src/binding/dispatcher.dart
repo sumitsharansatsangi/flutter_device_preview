@@ -246,9 +246,6 @@ class PreviewDispatcher implements ui.PlatformDispatcher {
   ui.SemanticsActionEventCallback? get onSemanticsActionEvent =>
       _previewSemanticsActionEventCallback ?? parent.onSemanticsActionEvent;
 
-  // @override
-  // ui.SemanticsActionEventCallback? onSemanticsActionEvent;
-
   @override
   Iterable<ui.Display> get displays => parent.displays;
 
