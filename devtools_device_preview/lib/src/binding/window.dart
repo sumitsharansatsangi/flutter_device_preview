@@ -81,13 +81,6 @@ class PreviewWindow implements ui.SingletonFlutterWindow {
       parent.onSemanticsEnabledChanged = value;
 
   @override
-  ui.SemanticsActionCallback? get onSemanticsAction => parent.onSemanticsAction;
-
-  @override
-  set onSemanticsAction(ui.SemanticsActionCallback? value) =>
-      parent.onSemanticsAction = value;
-
-  @override
   ui.VoidCallback? get onTextScaleFactorChanged =>
       parent.onTextScaleFactorChanged;
 
@@ -275,15 +268,19 @@ class PreviewWindow implements ui.SingletonFlutterWindow {
 
   @override
   String? get systemFontFamily => parent.systemFontFamily;
-  
+
   @override
   ui.GestureSettings get gestureSettings => parent.gestureSettings;
-  
+
   @override
-  bool get nativeSpellCheckServiceDefined => parent.nativeSpellCheckServiceDefined;
-  
+  bool get nativeSpellCheckServiceDefined =>
+      parent.nativeSpellCheckServiceDefined;
+
   @override
-  Object get viewId => parent.viewId;
+  ui.Display get display => parent.display;
+
+  @override
+  int get viewId => parent.viewId;
 }
 
 class PreviewWindowPadding implements ui.ViewPadding {

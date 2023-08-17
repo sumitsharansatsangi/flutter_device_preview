@@ -19,7 +19,7 @@ class Preview implements ui.FlutterView {
 
   set devicePixelRatio(double? value) {
     _previewDevicePixelRatio = value;
-   previewDispatcher.onMetricsChanged?.call();
+    previewDispatcher.onMetricsChanged?.call();
   }
 
   ui.ViewPadding? _previewPadding;
@@ -29,7 +29,7 @@ class Preview implements ui.FlutterView {
 
   set padding(ui.ViewPadding? value) {
     _previewPadding = value;
-   previewDispatcher.onMetricsChanged?.call();
+    previewDispatcher.onMetricsChanged?.call();
   }
 
   ui.Rect? _previewPhysicalGeometry;
@@ -40,7 +40,7 @@ class Preview implements ui.FlutterView {
 
   set physicalGeometry(ui.Rect? value) {
     _previewPhysicalGeometry = value;
-   previewDispatcher.onMetricsChanged?.call();
+    previewDispatcher.onMetricsChanged?.call();
   }
 
   ui.Size? _previewPhysicalSize;
@@ -50,7 +50,7 @@ class Preview implements ui.FlutterView {
 
   set physicalSize(ui.Size? value) {
     _previewPhysicalSize = value;
-   previewDispatcher.onMetricsChanged?.call();
+    previewDispatcher.onMetricsChanged?.call();
   }
 
   @override
@@ -78,14 +78,17 @@ class Preview implements ui.FlutterView {
 
   set viewPadding(ui.ViewPadding? value) {
     _previewViewPadding = value;
-   previewDispatcher.onMetricsChanged?.call();
+    previewDispatcher.onMetricsChanged?.call();
   }
 
   @override
   ui.GestureSettings get gestureSettings => parent.gestureSettings;
 
   @override
-  Object get viewId => parent.viewId;
+  ui.Display get display => parent.display;
+
+  @override
+  int get viewId => parent.viewId;
 }
 
 class PreviewWindowPadding implements ui.ViewPadding {

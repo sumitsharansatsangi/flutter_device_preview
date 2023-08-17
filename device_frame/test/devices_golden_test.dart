@@ -58,7 +58,7 @@ void main() {
               children: [
                 for (var orientation in [
                   if (device.canRotate) Orientation.portrait,
-                  Orientation.landscape
+                  Orientation.landscape,
                 ])
                   for (var isVirtualKeyboardEnabled in [false, true])
                     DeviceFrame(

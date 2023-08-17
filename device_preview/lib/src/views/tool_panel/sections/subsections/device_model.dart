@@ -74,7 +74,7 @@ class _DeviceModelPickerState extends State<DeviceModelPicker>
             const Tab(
               icon: Icon(Icons.tune),
               text: 'Custom',
-            )
+            ),
           ],
         ),
       ),

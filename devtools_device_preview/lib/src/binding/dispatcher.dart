@@ -85,13 +85,6 @@ class PreviewDispatcher implements ui.PlatformDispatcher {
       parent.onReportTimings = value;
 
   @override
-  ui.SemanticsActionCallback? get onSemanticsAction => parent.onSemanticsAction;
-
-  @override
-  set onSemanticsAction(ui.SemanticsActionCallback? value) =>
-      parent.onSemanticsAction = value;
-
-  @override
   ui.VoidCallback? get onSemanticsEnabledChanged =>
       parent.onSemanticsEnabledChanged;
 
@@ -178,7 +171,8 @@ class PreviewDispatcher implements ui.PlatformDispatcher {
   }
 
   @override
-  bool get nativeSpellCheckServiceDefined => parent.nativeSpellCheckServiceDefined;
+  bool get nativeSpellCheckServiceDefined =>
+      parent.nativeSpellCheckServiceDefined;
 
   ui.Brightness? _previewBrightness;
 
@@ -247,4 +241,24 @@ class PreviewDispatcher implements ui.PlatformDispatcher {
 
   @override
   Iterable<ui.FlutterView> get views => parent.views;
+
+  @override
+  ui.SemanticsActionEventCallback? get onSemanticsActionEvent =>
+      _previewSemanticsActionEventCallback ?? parent.onSemanticsActionEvent;
+
+  // @override
+  // ui.SemanticsActionEventCallback? onSemanticsActionEvent;
+
+  @override
+  Iterable<ui.Display> get displays => parent.displays;
+
+  @override
+  ui.FlutterView? view({required int id}) => parent.view(id: id);
+
+  ui.SemanticsActionEventCallback? _previewSemanticsActionEventCallback;
+
+  @override
+  set onSemanticsActionEvent(ui.SemanticsActionEventCallback? callback) {
+    _previewSemanticsActionEventCallback = callback;
+  }
 }
