@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:device_preview/src/state/state.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:get_storage/get_storage.dart';
 import '../storage.dart';
 
 /// A storage that keeps all preferences stored as json in the
@@ -21,8 +20,10 @@ class PreferencesDevicePreviewStorage extends DevicePreviewStorage {
   /// Load the last saved preferences (until [ignore] is `true`).
   @override
   Future<DevicePreviewData?> load() async {
-    final shared = await SharedPreferences.getInstance();
-    final json = shared.getString(preferenceKey);
+    await GetStorage.init();
+    final box = GetStorage();
+    // final shared = await SharedPreferences.getInstance();
+    final json = box.read(preferenceKey);
     if (json == null || json.isEmpty) return null;
     return DevicePreviewData.fromJson(jsonDecode(json));
   }
@@ -39,10 +40,10 @@ class PreferencesDevicePreviewStorage extends DevicePreviewStorage {
   DevicePreviewData? _saveData;
 
   Future _save() async {
-    await Future.delayed(const Duration(milliseconds: 500));
+    await GetStorage.init(); 
     if (_saveData != null) {
-      final shared = await SharedPreferences.getInstance();
-      await shared.setString(preferenceKey, jsonEncode(_saveData!.toJson()));
+      final box = GetStorage();
+      await box.write(preferenceKey, jsonEncode(_saveData!.toJson()));
     }
     _saveTask = null;
   }

@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # file: ^7.0.0  
   flutter_localizations:
     sdk: flutter
   provider: ^6.0.5
@@ -17,7 +18,8 @@ dependencies:
     path: ../device_frame
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
-  shared_preferences: ^2.2.0
+  # shared_preferences: ^2.2.0
+  get_storage: ^2.1.1
   collection: ^1.17.1
 
 dev_dependencies:
@@ -25,5 +27,5 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.2
   build_runner: ^2.4.6
-  freezed: ^2.4.1
+  freezed: ^2.4.2
   json_serializable: ^6.7.1
