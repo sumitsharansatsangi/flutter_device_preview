@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../utilities/json_converters.dart';
-import 'package:flutter/foundation.dart';
 
 part 'state.freezed.dart';
 part 'state.g.dart';

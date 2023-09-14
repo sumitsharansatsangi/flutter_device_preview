@@ -19,10 +19,9 @@ class PreferencesDevicePreviewStorage extends DevicePreviewStorage {
 
   /// Load the last saved preferences (until [ignore] is `true`).
   @override
-  Future<DevicePreviewData?> load() async {
+  Future<DevicePreviewData?> load() async {    
     await GetStorage.init();
     final box = GetStorage();
-    // final shared = await SharedPreferences.getInstance();
     final json = box.read(preferenceKey);
     if (json == null || json.isEmpty) return null;
     return DevicePreviewData.fromJson(jsonDecode(json));
